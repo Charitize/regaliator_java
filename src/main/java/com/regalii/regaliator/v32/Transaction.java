@@ -33,6 +33,10 @@ public class Transaction extends AbstractEndpoint {
       super(configuration);
   }
 
+  public Response get(final String transactionId) {
+    return request.get("/transactions/" + transactionId);
+  }
+
   public Response list(final Map<String, Object> params) {
     return request.get("/transactions", params);
   }
