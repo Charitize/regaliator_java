@@ -54,7 +54,7 @@ public class Request {
     }
 
     public Response get(final String endpoint) {
-        final HttpURLConnection connection = buildConnection("GET", endpoint, null);
+        final HttpURLConnection connection = buildConnection("GET", endpoint, "");
         return new Response(connection);
     }
 
@@ -62,7 +62,7 @@ public class Request {
         if(params == null) {
             return get(endpoint);
         } else {
-            final HttpURLConnection connection = buildConnection("GET", endpoint + "?" + urlEncodeUTF8(params), null);
+            final HttpURLConnection connection = buildConnection("GET", endpoint + "?" + urlEncodeUTF8(params), "");
             return new Response(connection);
         }
     }
