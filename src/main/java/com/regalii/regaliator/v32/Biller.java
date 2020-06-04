@@ -36,4 +36,8 @@ public class Biller extends AbstractEndpoint {
     public Response list(final Map<String, Object> params) {
         return request.get("/billers", params);
     }
+
+    public Response listRpps(final Map<String, Object> params) {
+        return request.get("/rpps_billers", params);
+    }
 }

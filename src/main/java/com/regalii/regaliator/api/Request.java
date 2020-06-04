@@ -134,6 +134,7 @@ public class Request {
 
         try {
             final URL url = buildURL(endpoint);
+            System.out.println(url);
 
             if (httpMethod.equals("PATCH")) {
                 allowMethods("PATCH");
@@ -147,6 +148,10 @@ public class Request {
             }
             final String authHash = new AuthHash(configuration).generate(md5, endpoint, date);
 
+            System.out.println("md5 " + md5);
+            System.out.println("auth " + authHash);
+            System.out.println("endpoint " +endpoint);
+
             connection.setRequestMethod(httpMethod);
             connection.setRequestProperty("Accept", configuration.getAccept());
             connection.setRequestProperty("Authorization", authHash);
@@ -154,6 +159,8 @@ public class Request {
             connection.setRequestProperty("Content-Type", configuration.getContentType());
             connection.setRequestProperty("Date", date);
             connection.setRequestProperty("User-Agent", configuration.getUserAgent());
+
+            System.out.println(connection.getRequestProperties());
 
             return connection;
         } catch (IOException e) {
